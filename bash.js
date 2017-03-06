@@ -1,17 +1,12 @@
-//console.log(process);
-
-//console.log(Object.keys(process));
+let commands = require('./commands');
 
 process.stdout.write('prompt > ');
 
 process.stdin.on('data', function(data){
   var cmd = data.toString().trim();
 
-  if(cmd==='pwd'){
-    process.stdout.write(process.cwd());
-  }
-  if(cmd==='date'){
-    process.stdout.write(Date());
+  if(Object.keys(commands).includes(cmd)){
+    commands[cmd]();
   }
   //process.stdout.write('You typed: ' + cmd);
 
